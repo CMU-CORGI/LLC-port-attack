@@ -1,0 +1,40 @@
+* Notes for setting up and using huge pages *
+
+There are tons of websites.
+- https://help.ubuntu.com/community/KVM%20-%20Using%20Hugepages
+- http://manpages.ubuntu.com/manpages/bionic/man8/hugeadm.8.html
+- https://kerneltalks.com/services/what-is-huge-pages-in-linux/
+- https://www.thegeekdiary.com/centos-rhel-67-how-to-configure-hugepages/
+- https://github.com/libhugetlbfs/libhugetlbfs/blob/master/HOWTO
+*** https://paolozaino.wordpress.com/2016/10/02/how-to-force-any-linux-application-to-use-hugepages-without-modifying-the-source-code/
+
+* Installation requirements *
+
+For using hugeadm
+- sudo apt-get install libhugetlbfs-dev
+- There are other options too like hugepages. Not sure of the difference.
+
+* Setting up huge pages *
+
+- Mainly following the ***-marked website, section "Using hugeadm modern tool".
+  Replace "corgi" with any group name
+- $ sudo hugeadm --pool-pages-min 2MB:512
+- $ sudo hugeadm --pool-pages-max 2MB:1024
+- $ sudo hugeadm --set-shm-group=corgi
+  - I think that gives all corgi members the ability to use huge pages without root permissions
+
+- Mainly following the ***-marked website, section "Completing huge page configuration"
+- $ sudo mkdir -p /mnt/hugetlbfs
+- $ sudo mount -t hugetlbfs none /mnt/hugetlbfs -o gid=corgi
+- $ sudo hugeadm --set-recommended-shmmax
+
+* Using libhugetlbfs *
+- $ LD_PRELOAD=libhugetlbfs.so HUGETLB_MORECORE=yes <command>
+- Can also run applications using hugectl
+  - $ hugectl --heap <command>
+
+* Extra commands *
+- $ hugeadm --explain
+- $ hugeadm --list-all-mounts
+- $ hugeadm --pool-list
+- $ cat /proc/meminfo | grep Huge

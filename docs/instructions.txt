@@ -1,0 +1,22 @@
+This document provides instructions on running the code in this repository.
+Most of the code is self-explanatory and heavily documented, so here we describe
+only the requirements to run the code.
+
+The code for running the port attack is all contained within code/.
+
+The code utilizes huge pages in order to ensure that virtual addresses determine
+the cache set in the LLC. Instructions for setting up huge pages can be found in
+docs/hugepages.txt.
+
+The code relies upon architectural parameters to work correctly. You must set
+the correct values for your processor in code/constants.h.
+
+If using a multi-socket system, ensure that all threads run on a single socket
+by using OS code affinity functionality (see code/portAttack.cpp and code/Makefile).
+
+To run the main attack code:
+$ cd code/
+$ make runPortAttack
+
+Example graph scripts can be found in graphs/. As is, they graph the results
+reported in the Jumanji paper.
