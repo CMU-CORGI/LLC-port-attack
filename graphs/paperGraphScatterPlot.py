@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# This scripts generates the graph used in
+# This script generates a scatter plot version of the graph used in
 # Jumanji: The Case for Dynamic NUCA in the Datacenter, MICRO 2020
 
 from matplotlib.patches import Ellipse
