@@ -22,5 +22,5 @@ Some ideas implemented by this code come from [1]. See the in-code documentation
 for more details.
 
 --------------------
-[0] (Don't have our citation yet...) \
+[0] B. C. Schwedock and N. Beckmann, "Jumanji: The Case for Dynamic NUCA in the Datacenter," 2020 53rd Annual IEEE/ACM International Symposium on Microarchitecture (MICRO), Athens, Greece, 2020, pp. 665-680, doi: 10.1109/MICRO50266.2020.00061. \
 [1] F. Liu, Y. Yarom, Q. Ge, G. Heiser and R. B. Lee, "Last-Level Cache Side-Channel Attacks are Practical," 2015 IEEE Symposium on Security and Privacy, San Jose, CA, 2015, pp. 605-622, doi: 10.1109/SP.2015.43.
